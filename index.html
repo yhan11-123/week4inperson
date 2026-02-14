@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pirate Adventure</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #000;
+    }
+
+    /* ── Scene containers ── */
+    .scene {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+    }
+    .scene.active {
+      display: block;
+    }
+
+    /* ── Scene 1 ── */
+    #scene1 {
+      background: url('png/background.png') center/cover no-repeat;
+    }
+
+    #pirate-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 45%;
+      text-align: center;
+    }
+
+    #pirate-img {
+      width: 100%;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    #attack-point {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(255, 0, 0, 0.35);
+      border: 3px solid rgba(255, 0, 0, 0.7);
+      cursor: pointer;
+      animation: pulse 1.2s ease-in-out infinite;
+      z-index: 10;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+      50%      { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+    }
+
+    /* pirate fall animation */
+    @keyframes fall-down {
+      0%   { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, 30%) rotate(15deg); }
+    }
+    #pirate-container.falling {
+      animation: fall-down 0.8s ease-in forwards;
+    }
+
+    /* ── Scene 2 ── */
+    #scene2 {
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+    #scene2.active {
+      display: flex;
+    }
+
+    #map-container {
+      position: relative;
+      width: 70%;
+      height: 70%;
+      animation: map-pop 0.6s ease-out;
+    }
+
+    @keyframes map-pop {
+      0%   { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    #map-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    #star {
+      position: absolute;
+      top: 35%;
+      left: 55%;
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      animation: sparkle 0.8s ease-in-out infinite alternate;
+      z-index: 10;
+    }
+
+    @keyframes sparkle {
+      0%   { transform: translate(-50%, -50%) scale(1); }
+      100% { transform: translate(-50%, -50%) scale(1.2); }
+    }
+
+    /* ── Scene 3 ── */
+    #scene3 {
+      background: url('png/background.png') center/cover no-repeat;
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+    #scene3.active {
+      display: flex;
+    }
+
+    #chest-container {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 40%;
+      width: 45%;
+      animation: chest-drop 0.8s ease-in;
+    }
+
+    @keyframes chest-drop {
+      0%   { bottom: 110%; }
+      80%  { bottom: 38%; }
+      100% { bottom: 40%; }
+    }
+
+    #chest-img {
+      width: 100%;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    /* hit flash */
+    @keyframes hit-flash {
+      0%   { filter: brightness(1); }
+      50%  { filter: brightness(2) sepia(1) hue-rotate(-30deg); }
+      100% { filter: brightness(1); }
+    }
+    .hit-flash {
+      animation: hit-flash 0.3s ease-out;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scene 1: Pirate Attack -->
+  <div id="scene1" class="scene active">
+    <div id="pirate-container">
+      <img id="pirate-img" src="png/pirate.png" alt="Pirate">
+      <div id="attack-point"></div>
+    </div>
+  </div>
+
+  <!-- Scene 2: Map with Star -->
+  <div id="scene2" class="scene">
+    <div id="map-container">
+      <img id="map-img" src="png/map.png" alt="Map">
+      <img id="star" src="png/star.png" alt="Star">
+    </div>
+  </div>
+
+  <!-- Scene 3: Treasure Chest -->
+  <div id="scene3" class="scene">
+    <div id="chest-container">
+      <img id="chest-img" src="png/treasure chest close.png" alt="Treasure Chest">
+    </div>
+  </div>
+
+  <script>
+    // ── Scene 1 Logic ──
+    const attackPoint = document.getElementById('attack-point');
+    const pirateImg = document.getElementById('pirate-img');
+    const pirateContainer = document.getElementById('pirate-container');
+    let hitCount = 0;
+    let isAnimating = false;
+
+    attackPoint.addEventListener('click', () => {
+      if (isAnimating) return;
+      hitCount++;
+
+      if (hitCount < 3) {
+        // Show hurt pirate, then revert after 2 seconds
+        isAnimating = true;
+        pirateImg.src = 'png/pirate sick.png';
+        pirateImg.classList.add('hit-flash');
+
+        setTimeout(() => {
+          pirateImg.src = 'png/pirate.png';
+          pirateImg.classList.remove('hit-flash');
+          isAnimating = false;
+        }, 2000);
+      } else {
+        // Third hit: pirate defeated
+        isAnimating = true;
+        pirateImg.src = 'png/pirate sick.png';
+        attackPoint.style.display = 'none';
+
+        setTimeout(() => {
+          pirateContainer.classList.add('falling');
+          pirateImg.src = 'png/pirate down.png';
+
+          // Transition to Scene 2 after fall animation
+          setTimeout(() => {
+            document.getElementById('scene1').classList.remove('active');
+            document.getElementById('scene2').classList.add('active');
+          }, 1200);
+        }, 800);
+      }
+    });
+
+    // ── Scene 2 Logic ──
+    const star = document.getElementById('star');
+
+    star.addEventListener('click', () => {
+      // Transition to Scene 3
+      document.getElementById('scene2').classList.remove('active');
+      document.getElementById('scene3').classList.add('active');
+    });
+
+    // ── Scene 3 Logic ──
+    const chestImg = document.getElementById('chest-img');
+    let chestOpened = false;
+
+    chestImg.addEventListener('click', () => {
+      if (chestOpened) return;
+      chestOpened = true;
+      chestImg.src = 'png/treasure chest open.png';
+      chestImg.style.cursor = 'default';
+    });
+  </script>
+</body>
+</html>
