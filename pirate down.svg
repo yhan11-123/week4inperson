@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250">
+  <!-- Pirate Character - Defeated / Fallen Down (lying on ground) -->
+
+  <!-- Body lying on its back -->
+  <!-- Coat / Torso (horizontal) -->
+  <path d="M100,130 Q150,120 250,130 L250,170 Q150,180 100,170 Z" fill="#C0392B"/>
+  <line x1="175" y1="130" x2="175" y2="170" stroke="#A93226" stroke-width="2"/>
+  <!-- Coat buttons -->
+  <circle cx="175" cy="138" r="3" fill="#FFD700"/>
+  <circle cx="175" cy="150" r="3" fill="#FFD700"/>
+  <circle cx="175" cy="162" r="3" fill="#FFD700"/>
+
+  <!-- Belt -->
+  <rect x="230" y="125" width="12" height="50" rx="3" fill="#8B4513"/>
+  <rect x="228" y="143" width="16" height="15" rx="2" fill="#FFD700"/>
+
+  <!-- Left Leg (sprawled) -->
+  <rect x="255" y="125" width="55" height="22" rx="5" fill="#2C3E50" transform="rotate(15, 255, 136)"/>
+  <!-- Left Boot -->
+  <path d="M310,118 L330,118 Q340,118 340,128 L340,145 Q340,150 335,150 L325,150 L310,145" fill="#1A1A1A" transform="rotate(15, 310, 135)"/>
+
+  <!-- Right Leg (sprawled other direction) -->
+  <rect x="250" y="155" width="55" height="22" rx="5" fill="#2C3E50" transform="rotate(-10, 250, 166)"/>
+  <!-- Right Boot -->
+  <path d="M305,150 L325,148 Q335,148 335,158 L333,172 Q332,177 327,177 L315,175 L305,172" fill="#1A1A1A" transform="rotate(-10, 305, 162)"/>
+
+  <!-- Left Arm (sprawled out) -->
+  <path d="M120,130 Q100,110 75,100" stroke="#C0392B" stroke-width="18" fill="none" stroke-linecap="round"/>
+  <circle cx="72" cy="97" r="10" fill="#FDBCB4"/>
+  <!-- Sword dropped nearby -->
+  <g transform="translate(30, 75) rotate(-45)">
+    <rect x="0" y="0" width="5" height="20" rx="2" fill="#8B4513"/>
+    <rect x="-4" y="-3" width="13" height="4" rx="2" fill="#FFD700"/>
+    <rect x="1" y="-50" width="3" height="50" rx="1" fill="#C0C0C0"/>
+  </g>
+
+  <!-- Right Arm (over body) -->
+  <path d="M120,160 Q100,180 90,195" stroke="#C0392B" stroke-width="18" fill="none" stroke-linecap="round"/>
+  <circle cx="88" cy="198" r="10" fill="#FDBCB4"/>
+
+  <!-- Neck -->
+  <rect x="90" y="135" width="25" height="22" rx="5" fill="#FDBCB4"/>
+
+  <!-- Head (lying sideways, green-tinted) -->
+  <ellipse cx="60" cy="145" rx="45" ry="40" fill="#A8D8A0"/>
+
+  <!-- Bandana -->
+  <path d="M35,120 Q60,100 85,120" fill="#E74C3C"/>
+  <path d="M35,120 Q60,105 85,120" stroke="#C0392B" stroke-width="2.5" fill="none"/>
+
+  <!-- Eye patch strap -->
+  <line x1="40" y1="125" x2="80" y2="135" stroke="#1A1A1A" stroke-width="2.5"/>
+
+  <!-- Left Eye (X - knocked out) -->
+  <g stroke="#2C3E50" stroke-width="2.5" stroke-linecap="round">
+    <line x1="42" y1="135" x2="52" y2="145"/>
+    <line x1="52" y1="135" x2="42" y2="145"/>
+  </g>
+
+  <!-- Right Eye (patch) -->
+  <ellipse cx="70" cy="143" rx="10" ry="11" fill="#1A1A1A"/>
+  <ellipse cx="70" cy="143" rx="8" ry="9" fill="#2C2C2C"/>
+
+  <!-- Nose -->
+  <path d="M55,150 Q53,156 56,158 Q59,160 61,158 Q63,155 60,150" fill="#8BBF80"/>
+
+  <!-- Mouth (tongue out, defeated) -->
+  <path d="M40,165 Q50,170 65,168" stroke="#2C3E50" stroke-width="2" fill="none"/>
+  <ellipse cx="55" cy="172" rx="6" ry="4" fill="#E74C3C"/>
+
+  <!-- Dizzy stars above head -->
+  <g fill="#FFD700" opacity="0.7">
+    <polygon points="30,90 32,96 38,96 34,100 35,106 30,102 25,106 26,100 22,96 28,96"/>
+    <polygon points="55,80 57,85 62,85 58,88 59,93 55,90 51,93 52,88 48,85 53,85"/>
+    <polygon points="80,88 82,93 87,93 83,96 84,101 80,98 76,101 77,96 73,93 78,93"/>
+  </g>
+
+  <!-- Spiral dizzy effect -->
+  <path d="M45,85 Q50,80 55,85 Q60,90 55,95 Q50,100 45,95 Q40,90 45,85" fill="none" stroke="#FFD700" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Earring -->
+  <circle cx="25" cy="148" r="3" fill="none" stroke="#FFD700" stroke-width="2"/>
+  <circle cx="25" cy="153" r="2" fill="#FFD700"/>
+
+  <!-- Ground shadow under pirate -->
+  <ellipse cx="170" cy="200" rx="150" ry="15" fill="#000" opacity="0.1"/>
+</svg>

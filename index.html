@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pirate Attack - Get the Treasure!</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #1a1a2e;
+      font-family: 'Georgia', serif;
+    }
+
+    .game-container {
+      position: relative;
+      width: 800px;
+      height: 600px;
+      overflow: hidden;
+      border: 4px solid #8B4513;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .pirate-wrapper {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 250px;
+      height: 340px;
+      transition: transform 0.3s ease;
+    }
+
+    .pirate-wrapper.hurt {
+      animation: shake 0.5s ease;
+    }
+
+    .pirate-wrapper.defeated {
+      transform: translateX(-50%) translateY(60px);
+      width: 350px;
+      height: 220px;
+    }
+
+    .pirate-img {
+      width: 100%;
+      height: 100%;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(-50%) rotate(0deg); }
+      15% { transform: translateX(-50%) rotate(-8deg); }
+      30% { transform: translateX(-50%) rotate(8deg); }
+      45% { transform: translateX(-50%) rotate(-6deg); }
+      60% { transform: translateX(-50%) rotate(6deg); }
+      75% { transform: translateX(-50%) rotate(-3deg); }
+    }
+
+    .attack-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 0, 0, 0.6) 0%, rgba(255, 0, 0, 0.2) 60%, transparent 70%);
+      border: 3px solid rgba(255, 0, 0, 0.8);
+      cursor: pointer;
+      z-index: 10;
+      animation: pulse 1.5s infinite;
+      transition: opacity 0.3s ease;
+    }
+
+    .attack-circle:hover {
+      background: radial-gradient(circle, rgba(255, 0, 0, 0.8) 0%, rgba(255, 0, 0, 0.4) 60%, transparent 70%);
+      border-color: rgba(255, 50, 50, 1);
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .attack-circle:active {
+      transform: translate(-50%, -50%) scale(0.9);
+    }
+
+    .attack-circle.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 20px 10px rgba(255, 0, 0, 0.2);
+      }
+    }
+
+    /* Crosshair inside the circle */
+    .attack-circle::before,
+    .attack-circle::after {
+      content: '';
+      position: absolute;
+      background: rgba(255, 0, 0, 0.6);
+    }
+
+    .attack-circle::before {
+      top: 50%;
+      left: 15%;
+      right: 15%;
+      height: 2px;
+      transform: translateY(-50%);
+    }
+
+    .attack-circle::after {
+      left: 50%;
+      top: 15%;
+      bottom: 15%;
+      width: 2px;
+      transform: translateX(-50%);
+    }
+
+    .hit-counter {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      z-index: 20;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 8px 24px;
+      border-radius: 8px;
+      border: 2px solid #FFD700;
+    }
+
+    .message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #FFD700;
+      font-size: 36px;
+      font-weight: bold;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+      z-index: 30;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .message.visible {
+      opacity: 1;
+    }
+
+    .hit-effect {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 60px;
+      z-index: 25;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .hit-effect.show {
+      animation: hitPop 0.6s ease-out forwards;
+    }
+
+    @keyframes hitPop {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.5);
+      }
+      50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.3);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -80%) scale(1);
+      }
+    }
+
+    .treasure-message {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #FFD700;
+      font-size: 28px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      z-index: 30;
+      opacity: 0;
+      transition: opacity 1s ease;
+      text-align: center;
+    }
+
+    .treasure-message.visible {
+      opacity: 1;
+      animation: bounce 0.8s ease infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <!-- Background layer -->
+    <img src="background.svg" alt="Tropical Island Background" class="background">
+
+    <!-- Hit counter -->
+    <div class="hit-counter" id="hitCounter">Attacks: 0 / 3</div>
+
+    <!-- Pirate wrapper with attack circle -->
+    <div class="pirate-wrapper" id="pirateWrapper">
+      <img src="pirate.svg" alt="Pirate" class="pirate-img" id="pirateImg">
+
+      <!-- Circular attack point -->
+      <div class="attack-circle" id="attackCircle" title="Click to attack!"></div>
+
+      <!-- Hit effect -->
+      <div class="hit-effect" id="hitEffect">💥</div>
+    </div>
+
+    <!-- Victory message -->
+    <div class="message" id="victoryMessage">You defeated the pirate!<br>The treasure is yours!</div>
+
+    <!-- Treasure message -->
+    <div class="treasure-message" id="treasureMessage">🏴‍☠️ Click the target to attack the pirate! 🏴‍☠️</div>
+  </div>
+
+  <script>
+    const pirateImg = document.getElementById('pirateImg');
+    const pirateWrapper = document.getElementById('pirateWrapper');
+    const attackCircle = document.getElementById('attackCircle');
+    const hitCounter = document.getElementById('hitCounter');
+    const hitEffect = document.getElementById('hitEffect');
+    const victoryMessage = document.getElementById('victoryMessage');
+    const treasureMessage = document.getElementById('treasureMessage');
+
+    let attackCount = 0;
+    const maxAttacks = 3;
+    let isAnimating = false;
+
+    attackCircle.addEventListener('click', function () {
+      // Prevent clicks during animation or after game is over
+      if (isAnimating || attackCount >= maxAttacks) return;
+
+      isAnimating = true;
+      attackCount++;
+
+      // Update counter
+      hitCounter.textContent = `Attacks: ${attackCount} / ${maxAttacks}`;
+
+      // Show hit effect
+      hitEffect.classList.remove('show');
+      void hitEffect.offsetWidth; // Force reflow to restart animation
+      hitEffect.classList.add('show');
+
+      // Shake the pirate
+      pirateWrapper.classList.add('hurt');
+
+      if (attackCount < maxAttacks) {
+        // Change to sick pirate
+        pirateImg.src = 'pirate sick.svg';
+
+        // After 2 seconds, change back to normal pirate
+        setTimeout(function () {
+          pirateImg.src = 'pirate.svg';
+          pirateWrapper.classList.remove('hurt');
+          isAnimating = false;
+        }, 2000);
+      } else {
+        // Third attack - pirate is defeated
+        pirateImg.src = 'pirate sick.svg';
+
+        setTimeout(function () {
+          // Change to defeated pirate
+          pirateImg.src = 'pirate down.svg';
+          pirateWrapper.classList.remove('hurt');
+          pirateWrapper.classList.add('defeated');
+
+          // Hide attack circle
+          attackCircle.classList.add('hidden');
+
+          // Show victory message
+          victoryMessage.classList.add('visible');
+          treasureMessage.textContent = '⚔️ The treasure is now yours! ⚔️';
+          treasureMessage.classList.add('visible');
+
+          isAnimating = false;
+        }, 2000);
+      }
+    });
+  </script>
+</body>
+</html>

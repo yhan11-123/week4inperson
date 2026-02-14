@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400">
+  <!-- Pirate Character - Sick/Hurt (green tint, dizzy, sweat drops) -->
+
+  <!-- Left Leg (wobbling) -->
+  <rect x="115" y="310" width="28" height="60" rx="5" fill="#2C3E50" transform="rotate(-5, 129, 310)"/>
+  <!-- Left Boot -->
+  <path d="M108,360 L108,375 Q108,385 118,385 L148,385 Q153,385 153,380 L153,360" fill="#1A1A1A" transform="rotate(-5, 130, 370)"/>
+
+  <!-- Right Leg (wobbling) -->
+  <rect x="158" y="310" width="28" height="60" rx="5" fill="#2C3E50" transform="rotate(5, 172, 310)"/>
+  <!-- Right Boot -->
+  <path d="M152,360 L152,375 Q152,385 162,385 L192,385 Q197,385 197,380 L197,360" fill="#1A1A1A" transform="rotate(5, 172, 370)"/>
+
+  <!-- Body / Coat (slightly tilted) -->
+  <path d="M100,180 Q95,250 100,320 L200,320 Q205,250 200,180 Z" fill="#C0392B"/>
+  <line x1="150" y1="190" x2="150" y2="315" stroke="#A93226" stroke-width="2"/>
+  <circle cx="150" cy="210" r="4" fill="#FFD700"/>
+  <circle cx="150" cy="240" r="4" fill="#FFD700"/>
+  <circle cx="150" cy="270" r="4" fill="#FFD700"/>
+  <circle cx="150" cy="300" r="4" fill="#FFD700"/>
+
+  <!-- Belt -->
+  <rect x="95" y="275" width="110" height="12" rx="3" fill="#8B4513"/>
+  <rect x="140" y="273" width="20" height="16" rx="2" fill="#FFD700"/>
+  <rect x="145" y="276" width="10" height="10" rx="1" fill="#B8860B"/>
+
+  <!-- Left Arm (raised defensively) -->
+  <path d="M100,190 Q75,210 80,250" stroke="#C0392B" stroke-width="22" fill="none" stroke-linecap="round"/>
+  <circle cx="80" cy="255" r="12" fill="#A8D8A0"/>
+
+  <!-- Right Arm (flinching) -->
+  <path d="M200,190 Q220,210 210,250" stroke="#C0392B" stroke-width="22" fill="none" stroke-linecap="round"/>
+  <circle cx="210" cy="255" r="12" fill="#A8D8A0"/>
+
+  <!-- Neck -->
+  <rect x="135" y="155" width="30" height="30" rx="5" fill="#A8D8A0"/>
+
+  <!-- Head (green-tinted = sick) -->
+  <ellipse cx="150" cy="120" rx="50" ry="55" fill="#A8D8A0"/>
+
+  <!-- Bandana -->
+  <path d="M100,105 Q150,80 200,105 Q195,90 150,82 Q105,90 100,105" fill="#E74C3C"/>
+  <path d="M100,105 Q150,85 200,105" stroke="#C0392B" stroke-width="3" fill="none"/>
+  <circle cx="195" cy="108" r="5" fill="#C0392B"/>
+  <path d="M198,108 Q210,120 215,135" stroke="#E74C3C" stroke-width="4" fill="none"/>
+  <path d="M198,108 Q215,110 220,125" stroke="#C0392B" stroke-width="3" fill="none"/>
+
+  <!-- Eye patch strap -->
+  <line x1="115" y1="100" x2="185" y2="115" stroke="#1A1A1A" stroke-width="3"/>
+
+  <!-- Left Eye (dizzy/spiral) -->
+  <ellipse cx="130" cy="118" rx="10" ry="11" fill="white"/>
+  <path d="M130,110 Q136,114 130,118 Q124,122 130,126" stroke="#2C3E50" stroke-width="2" fill="none"/>
+  <path d="M126,114 Q130,110 134,114 Q138,118 134,122 Q130,126 126,122" stroke="#2C3E50" stroke-width="1.5" fill="none"/>
+
+  <!-- Right Eye (patch) -->
+  <ellipse cx="170" cy="122" rx="13" ry="14" fill="#1A1A1A"/>
+  <ellipse cx="170" cy="122" rx="11" ry="12" fill="#2C2C2C"/>
+
+  <!-- Eyebrows (worried) -->
+  <path d="M118,105 Q130,110 142,105" stroke="#5D4E37" stroke-width="3" fill="none"/>
+  <path d="M158,108 Q170,113 182,108" stroke="#5D4E37" stroke-width="3" fill="none"/>
+
+  <!-- Nose -->
+  <path d="M148,130 Q145,140 148,145 Q152,148 156,145 Q158,140 155,130" fill="#8BBF80"/>
+
+  <!-- Mouth (grimace/pain) -->
+  <path d="M128,158 Q135,150 145,155 Q155,150 165,155 Q172,150 178,158" stroke="#2C3E50" stroke-width="2.5" fill="none"/>
+
+  <!-- Sweat drops -->
+  <g fill="#87CEEB">
+    <path d="M95,95 Q92,105 95,110 Q98,105 95,95" opacity="0.8"/>
+    <path d="M205,100 Q202,110 205,115 Q208,110 205,100" opacity="0.8"/>
+    <path d="M85,120 Q82,128 85,132 Q88,128 85,120" opacity="0.6"/>
+  </g>
+
+  <!-- Pain stars -->
+  <g fill="#FFD700" opacity="0.8">
+    <polygon points="210,75 213,82 220,82 215,87 217,94 210,90 203,94 205,87 200,82 207,82" transform="scale(0.7) translate(90, 30)"/>
+    <polygon points="250,60 252,65 258,65 254,69 255,74 250,71 245,74 246,69 242,65 248,65" transform="scale(0.6) translate(120, 50)"/>
+    <polygon points="80,65 82,70 87,70 83,74 85,79 80,76 75,79 77,74 73,70 78,70"/>
+  </g>
+
+  <!-- Earring -->
+  <circle cx="100" cy="130" r="4" fill="none" stroke="#FFD700" stroke-width="2"/>
+  <circle cx="100" cy="136" r="2" fill="#FFD700"/>
+
+  <!-- Dizzy circles around head -->
+  <g fill="none" stroke="#FFD700" stroke-width="1.5" opacity="0.6">
+    <circle cx="90" cy="70" r="4"/>
+    <circle cx="110" cy="58" r="3"/>
+    <circle cx="140" cy="52" r="5"/>
+    <circle cx="170" cy="55" r="3"/>
+    <circle cx="195" cy="65" r="4"/>
+    <circle cx="210" cy="80" r="3"/>
+  </g>
+</svg>

@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400">
+  <!-- Pirate Character - Standing -->
+
+  <!-- Left Leg -->
+  <rect x="110" y="310" width="28" height="60" rx="5" fill="#2C3E50"/>
+  <!-- Left Boot -->
+  <path d="M105,360 L105,375 Q105,385 115,385 L145,385 Q150,385 150,380 L150,360" fill="#1A1A1A"/>
+  <rect x="105" y="358" width="45" height="5" rx="2" fill="#333"/>
+
+  <!-- Right Leg -->
+  <rect x="162" y="310" width="28" height="60" rx="5" fill="#2C3E50"/>
+  <!-- Right Boot -->
+  <path d="M155,360 L155,375 Q155,385 165,385 L195,385 Q200,385 200,380 L200,360" fill="#1A1A1A"/>
+  <rect x="155" y="358" width="45" height="5" rx="2" fill="#333"/>
+
+  <!-- Body / Coat -->
+  <path d="M100,180 Q95,250 100,320 L200,320 Q205,250 200,180 Z" fill="#C0392B"/>
+  <!-- Coat details -->
+  <line x1="150" y1="190" x2="150" y2="315" stroke="#A93226" stroke-width="2"/>
+  <!-- Coat buttons -->
+  <circle cx="150" cy="210" r="4" fill="#FFD700"/>
+  <circle cx="150" cy="240" r="4" fill="#FFD700"/>
+  <circle cx="150" cy="270" r="4" fill="#FFD700"/>
+  <circle cx="150" cy="300" r="4" fill="#FFD700"/>
+
+  <!-- Belt -->
+  <rect x="95" y="275" width="110" height="12" rx="3" fill="#8B4513"/>
+  <rect x="140" y="273" width="20" height="16" rx="2" fill="#FFD700"/>
+  <rect x="145" y="276" width="10" height="10" rx="1" fill="#B8860B"/>
+
+  <!-- Left Arm -->
+  <path d="M100,190 Q70,230 65,280" stroke="#C0392B" stroke-width="22" fill="none" stroke-linecap="round"/>
+  <!-- Left Hand -->
+  <circle cx="65" cy="285" r="12" fill="#FDBCB4"/>
+  <!-- Sword in left hand -->
+  <g transform="translate(50, 260) rotate(-20)">
+    <rect x="8" y="-5" width="6" height="25" rx="2" fill="#8B4513"/>
+    <rect x="2" y="-8" width="18" height="5" rx="2" fill="#FFD700"/>
+    <rect x="9" y="-70" width="4" height="65" rx="1" fill="#C0C0C0"/>
+    <polygon points="9,-70 13,-70 11,-80" fill="#C0C0C0"/>
+  </g>
+
+  <!-- Right Arm -->
+  <path d="M200,190 Q230,230 235,270" stroke="#C0392B" stroke-width="22" fill="none" stroke-linecap="round"/>
+  <!-- Right Hand -->
+  <circle cx="237" cy="275" r="12" fill="#FDBCB4"/>
+  <!-- Hook on right hand -->
+  <path d="M237,280 L237,300 Q237,310 230,310 Q225,310 225,305" stroke="#C0C0C0" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Neck -->
+  <rect x="135" y="155" width="30" height="30" rx="5" fill="#FDBCB4"/>
+
+  <!-- Head -->
+  <ellipse cx="150" cy="120" rx="50" ry="55" fill="#FDBCB4"/>
+
+  <!-- Bandana -->
+  <path d="M100,105 Q150,80 200,105 Q195,90 150,82 Q105,90 100,105" fill="#E74C3C"/>
+  <path d="M100,105 Q150,85 200,105" stroke="#C0392B" stroke-width="3" fill="none"/>
+  <!-- Bandana knot -->
+  <circle cx="195" cy="108" r="5" fill="#C0392B"/>
+  <path d="M198,108 Q210,120 215,135" stroke="#E74C3C" stroke-width="4" fill="none"/>
+  <path d="M198,108 Q215,110 220,125" stroke="#C0392B" stroke-width="3" fill="none"/>
+
+  <!-- Eye patch strap -->
+  <line x1="115" y1="100" x2="185" y2="115" stroke="#1A1A1A" stroke-width="3"/>
+
+  <!-- Left Eye (visible) -->
+  <ellipse cx="130" cy="118" rx="10" ry="11" fill="white"/>
+  <circle cx="132" cy="119" r="5" fill="#2C3E50"/>
+  <circle cx="133" cy="117" r="2" fill="white"/>
+
+  <!-- Right Eye (patch) -->
+  <ellipse cx="170" cy="122" rx="13" ry="14" fill="#1A1A1A"/>
+  <ellipse cx="170" cy="122" rx="11" ry="12" fill="#2C2C2C"/>
+
+  <!-- Eyebrows -->
+  <path d="M118,108 Q130,102 142,108" stroke="#5D4E37" stroke-width="3" fill="none"/>
+  <path d="M158,112 Q170,106 182,112" stroke="#5D4E37" stroke-width="3" fill="none"/>
+
+  <!-- Nose -->
+  <path d="M148,130 Q145,140 148,145 Q152,148 156,145 Q158,140 155,130" fill="#E8A090"/>
+
+  <!-- Mouth / Grin -->
+  <path d="M130,152 Q140,165 155,165 Q170,165 175,152" stroke="#2C3E50" stroke-width="2.5" fill="none"/>
+  <!-- Teeth -->
+  <rect x="140" y="155" width="7" height="6" rx="1" fill="white" stroke="#ccc" stroke-width="0.5"/>
+  <rect x="149" y="155" width="7" height="6" rx="1" fill="white" stroke="#ccc" stroke-width="0.5"/>
+  <rect x="158" y="155" width="6" height="5" rx="1" fill="#FFD700"/>
+
+  <!-- Beard stubble -->
+  <g fill="#5D4E37" opacity="0.3">
+    <circle cx="125" cy="155" r="1"/>
+    <circle cx="130" cy="160" r="1"/>
+    <circle cx="122" cy="162" r="1"/>
+    <circle cx="175" cy="158" r="1"/>
+    <circle cx="180" cy="155" r="1"/>
+    <circle cx="178" cy="163" r="1"/>
+    <circle cx="140" cy="170" r="1"/>
+    <circle cx="150" cy="173" r="1"/>
+    <circle cx="160" cy="171" r="1"/>
+  </g>
+
+  <!-- Earring -->
+  <circle cx="100" cy="130" r="4" fill="none" stroke="#FFD700" stroke-width="2"/>
+  <circle cx="100" cy="136" r="2" fill="#FFD700"/>
+</svg>
